@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "producto_terminado": "Arroz",
+        "cantidad_pack": 15,
+        "imagen_url": "https://via.placeholder.com/150"
+    },
+    {
+        "nombre_comprador": "Juan Pérez",
+        "numero_pedido": "001",
+        "pago": "Pagado",
+        "fecha_entrega": "2025-07-01",
+        "estado": "Pendiente"
+    }
+]

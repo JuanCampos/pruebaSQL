@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="carrito.css" />
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+
+            <div class="top">
+                <div class="logo">
+                    <h2>M<span class="danger">ARCA</span> </h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">
+                        Cerrar
+                    </span>
+                </div>
+            </div>
+            <!-- end top -->
+            <div class="sidebar">
+
+                <a href="clientes.html">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Inicio</h3>
+                </a>
+                <a href="catalogo.html" class="active">
+                    <span class="material-symbols-sharp">receipt_long</span>
+                    <h3>Catálogo</h3>
+                </a>
+
+            </div>
+        </aside>
+        <!-- --------------
+        end aside
+        -------------------- -->
+
+        <!-- --------------
+        start main part
+        --------------- -->
+        <main>
+            <h1>Stock de Productos</h1>
+            <div id="catalogo" class="grid-catalogo">
+                <!-- Los productos se cargarán acá -->
+            </div>
+            <!-- CARRITO -->
+            <div id="carrito-container" class="carrito hidden">
+                <h2>Carrito de Compras</h2>
+                <div id="carrito-items"></div>
+                <div class="carrito-total">
+                    <div class="carrito-lista">
+
+                    </div>
+                    <strong>Total:</strong> $<span id="carrito-total">0</span>
+                </div>
+                <button id="cerrar-carrito"
+                    style="width: 49%; height: 30px; background-color: #f59f9f; border: none;">Cerrar</button>
+                <button id="enviar-whatsapp"
+                    style="width: 49%; height: 30px; background-color: #a6f59f;  border: none;">Enviar
+                    pedido</button>
+            </div>
+
+            <button id="abrir-carrito" class="btn-carrito">
+                🛒 Ver Carrito (<span id="carrito-cantidad">0</span>)
+            </button>
+        </main>
+        <div class="right">
+            <div class="top">
+                <button id="menu_bar">
+                    <span class="material-symbols-sharp">Menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+        <script src="script.js"></script>
+        <script src="catalogo.js"></script>
+        <script src="stock.js"></script>
+        <script src="carrito.js"></script>
+</body>
+
+</html>

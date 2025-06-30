@@ -1,0 +1,102 @@
+.carrito {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 380px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+.carrito.hidden {
+    display: none;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.carrito-item button {
+    background: #d33;
+    color: #fff;
+    border: none;
+    padding: 2px 5px;
+    margin: 0 3px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.btn-carrito {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    max-width: 200px;
+}
+
+.estado {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.disponible {
+    color: green;
+}
+
+.agotandose {
+    color: orange;
+}
+
+.agotado {
+    color: red;
+}
+
+.grid-catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#carrito-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+@media (max-width: 768px) {
+    #carrito-container {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}

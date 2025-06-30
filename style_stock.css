@@ -1,0 +1,78 @@
+.grid-stock {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.card-stock {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+}
+
+.card-stock h3 {
+    margin-top: 0;
+}
+
+.stock-ok {
+    color: green;
+}
+
+.stock-low {
+    color: orange;
+}
+
+.stock-out {
+    color: red;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.grid-stock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* Modal base */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+}
