@@ -1,3 +1,6 @@
+// ✅ Agrega esta línea al inicio si usás config.js
+// <script src="config.js"></script>
+
 document.addEventListener('DOMContentLoaded', () => {
     const formStock = document.getElementById('form-stock');
 
@@ -19,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('imagen', imagenInput.files[0]);
             }
 
-            fetch('http://localhost:3000/stock', {
+            fetch(`${API_BASE_URL}/stock`, {
                 method: 'POST',
                 body: formData
             })
@@ -33,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 function renderStock(productos) {
     const grid = document.getElementById('catalogo');
     grid.innerHTML = '';
@@ -80,7 +84,6 @@ function renderStock(productos) {
         grid.appendChild(div);
     });
 
-    // Asignar eventos a botones de carrito después de renderizar
     document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = parseInt(btn.dataset.id);
@@ -98,8 +101,6 @@ function renderStock(productos) {
         });
     });
 }
-
-// Abrir modal
 
 let productoEditandoId = null;
 
@@ -129,7 +130,7 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
     formData.append('cantidad_pack', cantidad_pack);
     formData.append('precio', precio);
 
-    fetch(`http://localhost:3000/stock/${productoEditandoId}`, {
+    fetch(`${API_BASE_URL}/stock/${productoEditandoId}`, {
         method: 'PUT',
         body: formData
     })

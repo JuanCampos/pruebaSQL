@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:3000/stock')
+    fetch(`${API_BASE_URL}/stock`)
         .then(res => res.json())
         .then(data => {
             const catalogo = document.getElementById('catalogo');

@@ -168,7 +168,7 @@ function descontarStockDespuesDelPedido() {
         cantidad: item.cantidad
     }));
 
-    fetch('http://localhost:3000/descontar-stock', {
+    fetch('${API_BASE_URL}/descontar-stock', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(itemsParaDescontar)
