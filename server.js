@@ -6,7 +6,13 @@ const fs = require('fs');
 const { Database } = require('@sqlitecloud/drivers');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: [
+      'http://localhost:5500',
+      'https://legumbres-duplicado.netlify.app'
+]
+
+}));
 app.use(express.json());
 
 // =======================
