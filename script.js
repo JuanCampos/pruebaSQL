@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // -----------------------------------------
 
 function obtenerMaterias() {
-    fetch('http://localhost:3000/materias')
+    fetch('${API_BASE_URL}/descontar-stockias')
         .then(response => response.json())
         .then(data => {
             const tbody = document.querySelector('#tabla-materias tbody');
@@ -75,7 +75,7 @@ function agregarMateria(e) {
     const precio = parseFloat(document.getElementById('precio').value);
     const fecha = document.getElementById('fecha').value || null;
 
-    fetch('http://localhost:3000/materias', {
+    fetch('${API_BASE_URL}/descontar-stockias', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,7 +95,7 @@ function agregarMateria(e) {
 
 function eliminarMateria(id) {
     if (confirm('¿Estás seguro de eliminar esta materia prima?')) {
-        fetch(`http://localhost:3000/materias/${id}`, { method: 'DELETE' })
+        fetch(`${API_BASE_URL}/descontar-stockias/${id}`, { method: 'DELETE' })
             .then(() => {
                 obtenerMaterias();
             })
@@ -108,7 +108,7 @@ function eliminarMateria(id) {
 // -----------------------------------------
 
 function fetchPedidos() {
-    fetch('http://localhost:3000/pedidos')
+    fetch('${API_BASE_URL}/descontar-stockos')
         .then(res => res.json())
         .then(pedidos => {
             const hoy = new Date().toISOString().split('T')[0];
@@ -161,7 +161,7 @@ const formProducto = document.getElementById('form-producto');
 function abrirModal(pedidoId) {
     modal?.classList.remove('hidden');
 
-    fetch(`http://localhost:3000/pedidos/${pedidoId}`)
+    fetch(`${API_BASE_URL}/descontar-stockos/${pedidoId}`)
         .then(res => res.json())
         .then(pedido => {
             pedidoInfo.innerHTML = `
@@ -172,7 +172,7 @@ function abrirModal(pedidoId) {
             `;
         });
 
-    fetch(`http://localhost:3000/pedidos/${pedidoId}/productos`)
+    fetch(`${API_BASE_URL}/descontar-stockos/${pedidoId}/productos`)
         .then(res => res.json())
         .then(productos => {
             productosPedidoActual = productos;
@@ -204,13 +204,13 @@ formProducto?.addEventListener('submit', e => {
         subtotal
     };
 
-    fetch(`http://localhost:3000/pedidos/${pedidoId}/productos`, {
+    fetch(`${API_BASE_URL}/descontar-stockos/${pedidoId}/productos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
         .then(() => {
-            fetch(`http://localhost:3000/pedidos/${pedidoId}/productos`)
+            fetch(`${API_BASE_URL}/descontar-stockos/${pedidoId}/productos`)
                 .then(res => res.json())
                 .then(productos => {
                     productosPedidoActual = productos;
@@ -236,12 +236,12 @@ function mostrarProductos(pedidoId) {
 }
 
 window.eliminarProducto = (prodId, pedidoId) => {
-    fetch(`http://localhost:3000/pedidos/${pedidoId}/productos/${prodId}`, {
+    fetch(`${API_BASE_URL}/descontar-stockos/${pedidoId}/productos/${prodId}`, {
         method: 'DELETE'
     })
         .then(res => res.json())
         .then(() => {
-            return fetch(`http://localhost:3000/pedidos/${pedidoId}/productos`);
+            return fetch(`${API_BASE_URL}/descontar-stockos/${pedidoId}/productos`);
         })
         .then(res => res.json())
         .then(productos => {
@@ -270,7 +270,7 @@ function handlePedidoSubmit(e) {
     const fecha = document.getElementById('fecha_entrega').value;
     const estado = document.getElementById('estado').value;
 
-    fetch('http://localhost:3000/pedidos', {
+    fetch('${API_BASE_URL}/descontar-stockos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -298,7 +298,7 @@ function handlePedidoSubmit(e) {
 // -----------------------------------------
 
 function cargarSelectStock() {
-    fetch('http://localhost:3000/stock')
+    fetch('${API_BASE_URL}/descontar-stock')
         .then(res => res.json())
         .then(stock => {
             const select = document.getElementById('stock_id');
@@ -319,7 +319,7 @@ function cargarSelectStock() {
 }
 
 function cargarStock() {
-    fetch('http://localhost:3000/stock')
+    fetch('${API_BASE_URL}/descontar-stock')
         .then(res => res.json())
         .then(data => {
             const catalogo = document.getElementById('catalogo');
