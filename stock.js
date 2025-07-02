@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('imagen', imagenInput.files[0]);
             }
 
-            fetch(`${API_BASE_URL}/stock`, {
+            fetch(`https://pruebasql-production.up.railway.app/stock`, {
                 method: 'POST',
                 body: formData
             })
