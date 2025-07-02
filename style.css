@@ -130,7 +130,7 @@ aside .sidebar a:hover span {
 /* MAIN */
 
 main {
-  margin: 6rem 10px 0 10px;
+  margin: 6rem;
 
   main .date {
     display: inline-block;
