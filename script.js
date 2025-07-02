@@ -14,6 +14,7 @@ closeBtn?.addEventListener('click', () => {
     sideMenu.style.display = "none";
 });
 
+
 // -----------------------------------------
 // DOMContentLoaded principal
 // -----------------------------------------
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // -----------------------------------------
 
 function obtenerMaterias() {
-        fetch(`${API_BASE_URL}/materias`)
+        fetch(`https://pruebasql-production.up.railway.app/materias`)
         .then(response => response.json())
         .then(data => {
             const tbody = document.querySelector('#tabla-materias tbody');
@@ -75,7 +76,7 @@ function agregarMateria(e) {
     const precio = parseFloat(document.getElementById('precio').value);
     const fecha = document.getElementById('fecha').value || null;
 
-        fetch(`${API_BASE_URL}/materias`, {
+        fetch(`https://pruebasql-production.up.railway.app/materias`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,7 +96,7 @@ function agregarMateria(e) {
 
 function eliminarMateria(id) {
     if (confirm('¿Estás seguro de eliminar esta materia prima?')) {
-        fetch(`${API_BASE_URL}/materias/${id}`, { method: 'DELETE' })
+        fetch(`https://pruebasql-production.up.railway.app/materias/${id}`, { method: 'DELETE' })
             .then(() => {
                 obtenerMaterias();
             })
@@ -108,7 +109,7 @@ function eliminarMateria(id) {
 // -----------------------------------------
 
 function fetchPedidos() {
-    fetch(`${API_BASE_URL}/pedidos`) 
+    fetch(`https://pruebasql-production.up.railway.app/pedidos`) 
         .then(res => res.json())
         .then(pedidos => {
             const hoy = new Date().toISOString().split('T')[0];
@@ -161,7 +162,7 @@ const formProducto = document.getElementById('form-producto');
 function abrirModal(pedidoId) {
     modal?.classList.remove('hidden');
 
-    fetch(`${API_BASE_URL}/pedidos/${pedidoId}`)
+    fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}`)
         .then(res => res.json())
         .then(pedido => {
             pedidoInfo.innerHTML = `
@@ -172,7 +173,7 @@ function abrirModal(pedidoId) {
             `;
         });
 
-    fetch(`${API_BASE_URL}/pedidos/${pedidoId}/productos`)
+    fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}/productos`)
         .then(res => res.json())
         .then(productos => {
             productosPedidoActual = productos;
@@ -204,13 +205,13 @@ formProducto?.addEventListener('submit', e => {
         subtotal
     };
 
-    fetch(`${API_BASE_URL}/pedidos/${pedidoId}/productos`, {
+    fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}/productos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
         .then(() => {
-            fetch(`${API_BASE_URL}/pedidos/${pedidoId}/productos`)
+            fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}/productos`)
                 .then(res => res.json())
                 .then(productos => {
                     productosPedidoActual = productos;
@@ -236,12 +237,12 @@ function mostrarProductos(pedidoId) {
 }
 
 window.eliminarProducto = (prodId, pedidoId) => {
-    fetch(`${API_BASE_URL}/pedidos/${pedidoId}/productos/${prodId}`, {
+    fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}/productos/${prodId}`, {
         method: 'DELETE'
     })
         .then(res => res.json())
         .then(() => {
-            return fetch(`${API_BASE_URL}/pedidos/${pedidoId}/productos`);
+            return fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}/productos`);
         })
         .then(res => res.json())
         .then(productos => {
@@ -270,7 +271,7 @@ function handlePedidoSubmit(e) {
     const fecha = document.getElementById('fecha_entrega').value;
     const estado = document.getElementById('estado').value;
 
-    fetch(`${API_BASE_URL}/pedidos`, {
+    fetch(`https://pruebasql-production.up.railway.app/pedidos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -298,7 +299,7 @@ function handlePedidoSubmit(e) {
 // -----------------------------------------
 
 function cargarSelectStock() {
-    fetch(`${API_BASE_URL}/stock`)
+    fetch(`https://pruebasql-production.up.railway.app/stock`)
         .then(res => res.json())
         .then(stock => {
             const select = document.getElementById('stock_id');
@@ -319,7 +320,7 @@ function cargarSelectStock() {
 }
 
 function cargarStock() {
-    fetch(`${API_BASE_URL}/stock`)
+    fetch(`https://pruebasql-production.up.railway.app/stock`)
         .then(res => res.json())
         .then(data => {
             const catalogo = document.getElementById('catalogo');
