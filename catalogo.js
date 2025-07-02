@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch(`${API_BASE_URL}/stock`)
+    fetch(`https://pruebasql-production.up.railway.app//stock`)
         .then(res => res.json())
         .then(data => {
             const catalogo = document.getElementById('catalogo');
