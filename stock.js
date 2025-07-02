@@ -130,7 +130,7 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
     formData.append('cantidad_pack', cantidad_pack);
     formData.append('precio', precio);
 
-    fetch(`${API_BASE_URL}/stock/${productoEditandoId}`, {
+    fetch(`https://pruebasql-production.up.railway.app/stock/${productoEditandoId}`, {
         method: 'PUT',
         body: formData
     })
