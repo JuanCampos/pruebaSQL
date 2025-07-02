@@ -25,7 +25,7 @@
 /* RESET */
 
 * {
-  margin: 0 20px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
@@ -130,7 +130,7 @@ aside .sidebar a:hover span {
 /* MAIN */
 
 main {
-  margin-top: 6rem;
+  margin: 6rem 10px 0 10px;
 }
 
 main .date {
