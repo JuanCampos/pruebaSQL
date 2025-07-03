@@ -59,7 +59,7 @@ function renderStock(productos) {
         const div = document.createElement('div');
         div.classList.add('card-stock');
         div.innerHTML = `
-            <img src="${prod.imagen_url || 'https://via.placeholder.com/150'}" alt="${prod.producto_terminado}" width="100%">
+            <img src="$/uploads/{prod.imagen_url || 'https://via.placeholder.com/150'}" alt="${prod.producto_terminado}" width="100%">
             <h3>${prod.producto_terminado}</h3>
             <p>Stock: <span class="${stockClass}">${prod.cantidad_pack} packs</span></p>
             <p>Estado: <span class="${stockClass}">${estado}</span></p>
