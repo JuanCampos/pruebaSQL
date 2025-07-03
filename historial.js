@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchHistorial() {
-    fetch(`${API_BASE_URL}/pedidos`)
+    fetch(`https://pruebasql-production.up.railway.app/pedidos`)
         .then(res => res.json())
         .then(pedidos => {
             const hoy = new Date().toISOString().split('T')[0];
@@ -54,7 +54,7 @@ function abrirModal(pedidoId) {
     pedidoInfo.innerHTML = '';
     tablaProductos.innerHTML = '';
 
-    fetch(`${API_BASE_URL}/pedidos/${pedidoId}`)
+    fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}`)
         .then(res => res.json())
         .then(pedido => {
             pedidoInfo.innerHTML = `
@@ -65,7 +65,7 @@ function abrirModal(pedidoId) {
             `;
         });
 
-    fetch(`${API_BASE_URL}/pedidos/${pedidoId}/productos`)
+    fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}/productos`)
         .then(res => res.json())
         .then(productos => {
             productos.forEach(prod => {
