@@ -195,12 +195,13 @@ closeModalBtn?.addEventListener('click', () => {
 formProducto?.addEventListener('submit', e => {
     e.preventDefault();
     const pedidoId = modal.dataset.pedidoId;
-    const stock_id = document.getElementById('stock_id').value || null;
-    const producto = document.getElementById('producto').value;
+    const select = document.getElementById('stock_id');
+    const producto = select.options[select.selectedIndex].text;
+    const stock_id = select.value || null;
     const cantidad = parseFloat(document.getElementById('cantidad').value);
     const costo = parseFloat(document.getElementById('costo').value);
     const subtotal = cantidad * costo;
-    
+
     if (!producto || isNaN(cantidad) || isNaN(costo)) {
         alert("Todos los campos son obligatorios.");
         return;
@@ -209,7 +210,7 @@ formProducto?.addEventListener('submit', e => {
         alert("La cantidad y el costo deben ser mayores a cero.");
         return;
     }
-    
+
     const payload = {
         stock_id: stock_id ? parseInt(stock_id) : null,
         producto,
@@ -231,7 +232,11 @@ formProducto?.addEventListener('submit', e => {
                     mostrarProductos(pedidoId);
                     formProducto.reset();
                 });
-        });
+        })
+        .catch (err => {
+        console.error(err);
+        alert("Error al agregar el producto al pedido.");
+    });
 });
 
 function mostrarProductos(pedidoId) {
