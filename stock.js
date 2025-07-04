@@ -32,9 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(err => console.error('Error al guardar producto:', err));
         });
     }
+
     cargarStock();
 });
-function renderStock(productos) {
+
+function renderStockAdmin(productos) {
     const grid = document.getElementById('catalogo');
     grid.innerHTML = '';
 
@@ -72,19 +74,10 @@ function renderStock(productos) {
             <button class="btn-eliminar-stock" data-id="${prod.id}">
                 Eliminar
             </button>
-            <button 
-                class="btn-agregar-carrito" 
-                data-id="${prod.id}"
-                data-nombre="${prod.producto_terminado}"
-                data-precio="${prod.precio}"
-                data-stock="${prod.cantidad_pack}">
-                Agregar al carrito
-            </button>
         `;
         grid.appendChild(div);
     });
 
-    // ✅ ASIGNAR EVENTOS AQUÍ, SOLO UNA VEZ
     document.querySelectorAll('.btn-eliminar-stock').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = parseInt(btn.dataset.id);
@@ -104,23 +97,6 @@ function renderStock(productos) {
             }
         });
     });
-
-    document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = parseInt(btn.dataset.id);
-            const nombre = btn.dataset.nombre;
-            const precio = parseFloat(btn.dataset.precio);
-            const stock = parseInt(btn.dataset.stock);
-
-            agregarAlCarrito({
-                id,
-                nombre,
-                precio,
-                stock,
-                cantidad: 1
-            });
-        });
-    });
 }
 
 let productoEditandoId = null;
@@ -137,18 +113,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-function cargarStock() {
-    fetch('https://pruebasql-production.up.railway.app/stock')
-        .then(res => res.json())
-        .then(data => {
-            renderStock(data);
-        })
-        .catch(err => {
-            console.error(err);
-            alert('Error cargando el stock.');
-        });
-}
-
 document.getElementById('cerrar-modal-editar').addEventListener('click', () => {
     document.getElementById('modal-editar').classList.add('hidden');
 });
@@ -163,14 +127,4 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
     formData.append('cantidad_pack', cantidad_pack);
     formData.append('precio', precio);
 
-    fetch(`https://pruebasql-production.up.railway.app/stock/${productoEditandoId}`, {
-        method: 'PUT',
-        body: formData
-    })
-        .then(res => res.json())
-        .then(() => {
-            document.getElementById('modal-editar').classList.add('hidden');
-            cargarStock();
-        })
-        .catch(err => console.error(err));
-});
+    fetch(`https://pruebasql-production.up.railway.app/stock/${productoEdit
