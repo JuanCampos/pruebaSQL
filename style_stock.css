@@ -71,6 +71,33 @@
 
 .modal-content {
     background: #fff;
+
+    #catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-stock {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #fff;
+    text-align: center;
+}
+
+.card-stock img {
+    border-radius: 4px;
+    max-width: 100%;
+    height: auto;
+}
+
+.card-stock button {
+    margin: 5px;
+}
+
     padding: 2rem;
     border-radius: 8px;
     max-width: 400px;
