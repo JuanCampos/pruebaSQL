@@ -127,4 +127,26 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
     formData.append('cantidad_pack', cantidad_pack);
     formData.append('precio', precio);
 
-    fetch(`https://pruebasql-production.up.railway.app/stock/${productoEdit
+    fetch(`https://pruebasql-production.up.railway.app/stock/${productoEditandoId}`, {
+        method: 'PUT',
+        body: formData
+    })
+        .then(res => res.json())
+        .then(() => {
+            document.getElementById('modal-editar').classList.add('hidden');
+            cargarStock();
+        })
+        .catch(err => console.error(err));
+});
+
+function cargarStock() {
+    fetch('https://pruebasql-production.up.railway.app/stock')
+        .then(res => res.json())
+        .then(data => {
+            renderStockAdmin(data);
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Error cargando el stock.');
+        });
+}
