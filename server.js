@@ -327,6 +327,18 @@ app.post('/descontar-stock', async (req, res) => {
   }
 });
 
+app.delete('/stock/:id', async (req, res) => {
+  try {
+    const conn = await getConnection();
+    await conn.query('DELETE FROM stock WHERE id = ?', [req.params.id]);
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // START SERVER
 app.listen(3000, () => {
   console.log('✅ Servidor corriendo en http://localhost:3000');
