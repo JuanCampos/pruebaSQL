@@ -165,15 +165,3 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
         .catch(err => console.error(err));
 });
 
-// ✅ cargarStock() definida para inicializar
-function cargarStock() {
-    fetch('https://pruebasql-production.up.railway.app/stock')
-        .then(res => res.json())
-        .then(data => {
-            renderStock(data);
-        })
-        .catch(err => {
-            console.error(err);
-            alert('Error cargando el stock.');
-        });
-}
