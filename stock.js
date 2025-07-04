@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
 function renderStock(productos) {
     const grid = document.getElementById('catalogo');
     grid.innerHTML = '';
@@ -82,26 +81,27 @@ function renderStock(productos) {
             </button>
         `;
         grid.appendChild(div);
-        document.querySelectorAll('.btn-eliminar-stock').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const id = parseInt(btn.dataset.id);
-                if (confirm('¿Seguro que querés eliminar este producto?')) {
-                    fetch(`https://pruebasql-production.up.railway.app/stock/${id}`, {
-                        method: 'DELETE'
-                    })
-                        .then(res => res.json())
-                        .then(() => {
-                            alert('Producto eliminado.');
-                            cargarStock();
-                        })
-                        .catch(err => {
-                            console.error(err);
-                            alert('Error eliminando producto.');
-                        });
-                }
-            });
-        });
+    });
 
+    // ✅ ASIGNAR EVENTOS AQUÍ, SOLO UNA VEZ
+    document.querySelectorAll('.btn-eliminar-stock').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id);
+            if (confirm('¿Seguro que querés eliminar este producto?')) {
+                fetch(`https://pruebasql-production.up.railway.app/stock/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        alert('Producto eliminado.');
+                        cargarStock();
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Error eliminando producto.');
+                    });
+            }
+        });
     });
 
     document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
@@ -121,6 +121,7 @@ function renderStock(productos) {
         });
     });
 }
+
 
 let productoEditandoId = null;
 
