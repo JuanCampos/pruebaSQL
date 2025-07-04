@@ -1,6 +1,3 @@
-// ✅ Agrega esta línea al inicio si usás config.js
-// <script src="config.js"></script>
-
 document.addEventListener('DOMContentLoaded', () => {
     const formStock = document.getElementById('form-stock');
 
@@ -72,6 +69,9 @@ function renderStock(productos) {
                 data-imagen="${prod.imagen_url || ''}">
                 Editar
             </button>
+            <button class="btn-eliminar-stock" data-id="${prod.id}">
+                Eliminar
+            </button>
             <button 
                 class="btn-agregar-carrito" 
                 data-id="${prod.id}"
@@ -82,6 +82,26 @@ function renderStock(productos) {
             </button>
         `;
         grid.appendChild(div);
+        document.querySelectorAll('.btn-eliminar-stock').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = parseInt(btn.dataset.id);
+                if (confirm('¿Seguro que querés eliminar este producto?')) {
+                    fetch(`https://pruebasql-production.up.railway.app/stock/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(() => {
+                            alert('Producto eliminado.');
+                            cargarStock();
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            alert('Error eliminando producto.');
+                        });
+                }
+            });
+        });
+
     });
 
     document.querySelectorAll('.btn-agregar-carrito').forEach(btn => {
@@ -134,10 +154,10 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
         method: 'PUT',
         body: formData
     })
-    .then(res => res.json())
-    .then(() => {
-        document.getElementById('modal-editar').classList.add('hidden');
-        cargarStock();
-    })
-    .catch(err => console.error(err));
+        .then(res => res.json())
+        .then(() => {
+            document.getElementById('modal-editar').classList.add('hidden');
+            cargarStock();
+        })
+        .catch(err => console.error(err));
 });
