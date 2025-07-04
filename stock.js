@@ -32,7 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(err => console.error('Error al guardar producto:', err));
         });
     }
+
+    cargarStock();
 });
+
 function renderStock(productos) {
     const grid = document.getElementById('catalogo');
     grid.innerHTML = '';
@@ -83,7 +86,7 @@ function renderStock(productos) {
         grid.appendChild(div);
     });
 
-    // ✅ ASIGNAR EVENTOS AQUÍ, SOLO UNA VEZ
+    // ✅ Asignar listeners una sola vez, fuera del bucle
     document.querySelectorAll('.btn-eliminar-stock').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = parseInt(btn.dataset.id);
@@ -121,7 +124,6 @@ function renderStock(productos) {
         });
     });
 }
-
 
 let productoEditandoId = null;
 
@@ -162,3 +164,16 @@ document.getElementById('form-editar-stock').addEventListener('submit', (e) => {
         })
         .catch(err => console.error(err));
 });
+
+// ✅ cargarStock() definida para inicializar
+function cargarStock() {
+    fetch('https://pruebasql-production.up.railway.app/stock')
+        .then(res => res.json())
+        .then(data => {
+            renderStock(data);
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Error cargando el stock.');
+        });
+}
