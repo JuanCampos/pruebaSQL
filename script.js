@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // -----------------------------------------
 
 function obtenerMaterias() {
-        fetch(`https://pruebasql-production.up.railway.app/materias`)
+    fetch(`https://pruebasql-production.up.railway.app/materias`)
         .then(response => response.json())
         .then(data => {
             const tbody = document.querySelector('#tabla-materias tbody');
@@ -76,7 +76,7 @@ function agregarMateria(e) {
     const precio = parseFloat(document.getElementById('precio').value);
     const fecha = document.getElementById('fecha').value || null;
 
-        fetch(`https://pruebasql-production.up.railway.app/materias`, {
+    fetch(`https://pruebasql-production.up.railway.app/materias`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -109,7 +109,7 @@ function eliminarMateria(id) {
 // -----------------------------------------
 
 function fetchPedidos() {
-    fetch(`https://pruebasql-production.up.railway.app/pedidos`) 
+    fetch(`https://pruebasql-production.up.railway.app/pedidos`)
         .then(res => res.json())
         .then(pedidos => {
             const hoy = new Date().toISOString().split('T')[0];
@@ -162,6 +162,9 @@ const formProducto = document.getElementById('form-producto');
 function abrirModal(pedidoId) {
     modal?.classList.remove('hidden');
 
+    // cargar los productos al select
+    cargarSelectStock();
+
     fetch(`https://pruebasql-production.up.railway.app/pedidos/${pedidoId}`)
         .then(res => res.json())
         .then(pedido => {
@@ -181,6 +184,7 @@ function abrirModal(pedidoId) {
         });
 
     modal.dataset.pedidoId = pedidoId;
+
 }
 
 closeModalBtn?.addEventListener('click', () => {
@@ -196,7 +200,16 @@ formProducto?.addEventListener('submit', e => {
     const cantidad = parseFloat(document.getElementById('cantidad').value);
     const costo = parseFloat(document.getElementById('costo').value);
     const subtotal = cantidad * costo;
-
+    
+    if (!producto || isNaN(cantidad) || isNaN(costo)) {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+    if (cantidad <= 0 || costo <= 0) {
+        alert("La cantidad y el costo deben ser mayores a cero.");
+        return;
+    }
+    
     const payload = {
         stock_id: stock_id ? parseInt(stock_id) : null,
         producto,
