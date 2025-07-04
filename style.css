@@ -214,6 +214,46 @@ main {
     cursor: pointer;
   }
 
+#modal form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#modal form select,
+#modal form input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#modal form select:focus,
+#modal form input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    outline: none;
+}
+
+#modal form button {
+    padding: 10px 15px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#modal form button:hover {
+    background: #2980b9;
+}
+
+
   /* RIGHT */
 
   .right {
