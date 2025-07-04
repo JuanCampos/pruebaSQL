@@ -238,7 +238,6 @@ formProducto?.addEventListener('submit', e => {
         alert("Error al agregar el producto al pedido.");
     });
 });
-
 function mostrarProductos(pedidoId) {
     tablaProductos.innerHTML = '';
     productosPedidoActual.forEach(prod => {
