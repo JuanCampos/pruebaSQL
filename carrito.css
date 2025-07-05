@@ -112,6 +112,6 @@ btn-agregar-carrito {
     transition: background-color 0.3s;
 }
 
-.btn-editar-stock:hover {
+.btn-agregar-carrito:hover {
     background-color: #2980b9;
 }
