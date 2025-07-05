@@ -73,33 +73,32 @@
     width: 100%;
 }
 
-/* Botones de acción dentro del modal */
-#modal table button {
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.btn-editar-stock {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Botón de Eliminar */
-#modal table button.eliminar {
-    background-color: #e74c3c;
+.btn-editar-stock:hover {
+  background-color: #2980b9;
 }
 
-#modal table button.eliminar:hover {
-    background-color: #c0392b;
+.btn-eliminar-stock {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Si quisieras un botón Editar */
-#modal table button.editar {
-    background-color: #3498db;
-}
-
-#modal table button.editar:hover {
-    background-color: #2980b9;
+.btn-eliminar-stock:hover {
+  background-color: #c0392b;
 }
