@@ -100,3 +100,18 @@
         transform: translateX(-50%) translateY(-50%);
     }
 }
+
+btn-agregar-carrito {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-editar-stock:hover {
+    background-color: #2980b9;
+}
