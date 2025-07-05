@@ -297,24 +297,6 @@ main {
 #modal table button:hover {
     background-color: #c0392b;
 }
-
-/* Botón de Eliminar */
-#modal table button.eliminar {
-    background-color: #e74c3c;
-}
-
-#modal table button.eliminar:hover {
-    background-color: #c0392b;
-}
-
-/* Si quisieras un botón Editar */
-#modal table button.editar {
-    background-color: #3498db;
-}
-
-#modal table button.editar:hover {
-    background-color: #2980b9;
-}
   /* RIGHT */
 
   .right {
