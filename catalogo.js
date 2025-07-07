@@ -86,9 +86,9 @@ function mostrarCarrito() {
     }
     let total = 0;
     carrito.forEach(item => {
-        total += item.precio * item.cantidad;
+        total += item.precio * cantidad;
         lista.innerHTML += `
-            <li>${item.nombre} - $${item.precio} x ${item.cantidad}</li>
+            <li>${item.nombre} - $${item.precio} x ${cantidad}</li>
         `;
     });
 
