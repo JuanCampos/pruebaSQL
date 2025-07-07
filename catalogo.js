@@ -31,7 +31,7 @@ function renderCatalogo(productos) {
         const card = document.createElement('div');
         let botonCarrito = "";
 
-        if (item.cantidad_pack > 0) {
+        if (cantidad > 0) {
             botonCarrito = `
               <button 
                 class="btn-agregar-carrito"
@@ -47,7 +47,7 @@ function renderCatalogo(productos) {
         card.innerHTML = `
             <img src="${item.imagen_url ? '/uploads/' + item.imagen_url : 'https://via.placeholder.com/150'}" alt="${item.producto_terminado}" width="100%">
             <h3>${item.producto_terminado}</h3>
-            <p>Cantidad disponible: ${item.cantidad_pack}</p>
+            <p>Cantidad disponible: ${cantidad}</p>
             <p>Precio: $${item.precio}</p>
             <p class="estado ${clase}">${estado}</p>
             ${botonCarrito}
