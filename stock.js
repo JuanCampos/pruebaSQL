@@ -47,7 +47,7 @@ function renderStockAdmin(productos) {
         if (prod.cantidad_pack === 0) {
             stockClass = 'stock-out';
             estado = 'Agotado ❌';
-        } else if (prod.cantidad_pack > 0 && prod.cantidad_pack <= 10) {
+        } else if (prod.cantidad_pack >= 1 && prod.cantidad_pack <= 10) {
             stockClass = 'stock-low';
             estado = 'Stock bajo ⚠️';
         } else {
