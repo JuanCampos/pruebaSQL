@@ -27,6 +27,20 @@ function renderCatalogo(productos) {
         }
 
         const card = document.createElement('div');
+        let botonCarrito = "";
+
+        if (item.cantidad_pack > 0) {
+            botonCarrito = `
+              <button 
+                class="btn-agregar-carrito"
+                data-id="${item.id}"
+                data-nombre="${item.producto_terminado}"
+                data-precio="${item.precio}"
+                data-stock="${item.cantidad_pack}">
+                Agregar al carrito
+              </button>`;
+        }
+
         card.className = 'card';
         card.innerHTML = `
             <img src="${item.imagen_url ? '/uploads/' + item.imagen_url : 'https://via.placeholder.com/150'}" alt="${item.producto_terminado}" width="100%">
@@ -34,14 +48,7 @@ function renderCatalogo(productos) {
             <p>Cantidad disponible: ${item.cantidad_pack}</p>
             <p>Precio: $${item.precio}</p>
             <p class="estado ${clase}">${estado}</p>
-            <button 
-                class="btn-agregar-carrito"
-                data-id="${item.id}"
-                data-nombre="${item.producto_terminado}"
-                data-precio="${item.precio}"
-                data-stock="${item.cantidad_pack}">
-                Agregar al carrito
-            </button>
+            ${botonCarrito}
         `;
         catalogo.appendChild(card);
     });
