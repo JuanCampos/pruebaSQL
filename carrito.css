@@ -101,12 +101,14 @@
     }
 }
 
-btn-agregar-carrito {
+.btn-agregar-carrito {
     background-color: #3498db;
     border: none;
-    color: white;
+    color: #fff;
     padding: 8px 12px;
+    margin-top: 10px;
     border-radius: 4px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
