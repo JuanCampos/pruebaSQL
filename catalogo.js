@@ -18,7 +18,7 @@ function renderCatalogo(productos) {
         if (item.cantidad_pack === 0) {
             estado = 'Agotado';
             clase = 'agotado';
-        } else if (item.cantidad_pack < 10) {
+        } else if (item.cantidad_pack >= 1 && item.cantidad_pack <= 10) {
             estado = 'Por agotarse';
             clase = 'agotandose';
         } else {
