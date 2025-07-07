@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function renderCatalogo(productos) {
     const catalogo = document.getElementById('catalogo');
-    const cantidad = Number(prod.cantidad_pack);
     catalogo.innerHTML = '';
     
     productos.forEach(item => {
+    const cantidad = Number(prod.cantidad_pack);
         let estado = '';
         let clase = '';
 
