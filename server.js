@@ -152,7 +152,9 @@ app.get('/pedidos/:id/productos', async (req, res) => {
     console.error(err);
     res.status(500).json({ error: err.message });
   }
-});app.post('/pedidos/:id/productos', async (req, res) => {
+});
+
+app.post('/pedidos/:id/productos', async (req, res) => {
   try {
     const { stock_id, producto, cantidad_kg, costo_unitario, subtotal } = req.body;
     const conn = await getConnection();
@@ -180,7 +182,7 @@ app.get('/pedidos/:id/productos', async (req, res) => {
 
       productoNombre = stockItem.producto_terminado;
 
-      // ✅ Descontar stock
+      // Descontar stock
       await conn.query(
         'UPDATE stock SET cantidad_pack = cantidad_pack - ? WHERE id = ?',
         [cantidad_kg, stock_id]
@@ -189,7 +191,7 @@ app.get('/pedidos/:id/productos', async (req, res) => {
       console.log("✅ Stock descontado correctamente.");
     }
 
-    // ✅ Insertar producto en el pedido
+    // Insertar producto en el pedido
     await conn.query(`
       INSERT INTO pedido_productos 
       (pedido_id, stock_id, producto, cantidad_kg, costo_unitario, subtotal)
@@ -218,26 +220,6 @@ app.delete('/pedidos/:pedidoId/productos/:prodId', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-// Después de INSERT en productos_pedido...
-if (stock_id) {
-    // Restar la cantidad pedida del stock
-    db.query(
-        `UPDATE stock
-         SET cantidad_pack = cantidad_pack - ?
-         WHERE id = ?`,
-        [cantidad_kg, stock_id],
-        (err, result) => {
-            if (err) {
-                console.error("Error actualizando stock:", err);
-                // Opcional: podés revertir el pedido si falla
-            } else {
-                console.log("Stock descontado correctamente");
-            }
-        }
-    );
-}
-
 
 // ------------------------------
 // STOCK
@@ -359,7 +341,6 @@ app.delete('/stock/:id', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 // START SERVER
 app.listen(3000, () => {
