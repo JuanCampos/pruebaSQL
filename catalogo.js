@@ -11,14 +11,16 @@ function renderCatalogo(productos) {
     const catalogo = document.getElementById('catalogo');
     catalogo.innerHTML = '';
 
+    const cantidad = Number(prod.cantidad_pack);
+    
     productos.forEach(item => {
         let estado = '';
         let clase = '';
 
-        if (item.cantidad_pack === 0) {
+        if (cantidad === 0) {
             estado = 'Agotado';
             clase = 'agotado';
-        } else if (item.cantidad_pack >= 1 && item.cantidad_pack <= 10) {
+        } else if (cantidad >= 1 && cantidad <= 10) {
             estado = 'Por agotarse';
             clase = 'agotandose';
         } else {
@@ -36,7 +38,7 @@ function renderCatalogo(productos) {
                 data-id="${item.id}"
                 data-nombre="${item.producto_terminado}"
                 data-precio="${item.precio}"
-                data-stock="${item.cantidad_pack}">
+                data-stock="${cantidad}">
                 Agregar al carrito
               </button>`;
         }
