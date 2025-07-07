@@ -39,44 +39,46 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderStockAdmin(productos) {
     const grid = document.getElementById('catalogo');
     grid.innerHTML = '';
+productos.forEach(prod => {
+    let stockClass = '';
+    let estado = '';
 
-    productos.forEach(prod => {
-        let stockClass = '';
-        let estado = '';
+    const cantidad = Number(prod.cantidad_pack);
 
-        if (prod.cantidad_pack === 0) {
-            stockClass = 'stock-out';
-            estado = 'Agotado ❌';
-        } else if (prod.cantidad_pack >= 1 && prod.cantidad_pack <= 10) {
-            stockClass = 'stock-low';
-            estado = 'Stock bajo ⚠️';
-        } else {
-            stockClass = 'stock-ok';
-            estado = 'Disponible ✅';
-        }
+    if (cantidad === 0) {
+        stockClass = 'stock-out';
+        estado = 'Agotado ❌';
+    } else if (cantidad > 0 && cantidad <= 10) {
+        stockClass = 'stock-low';
+        estado = 'Stock bajo ⚠️';
+    } else {
+        stockClass = 'stock-ok';
+        estado = 'Disponible ✅';
+    }
 
-        const div = document.createElement('div');
-        div.classList.add('card-stock');
-        div.innerHTML = `
-            <img src="${prod.imagen_url ? '/uploads/' + prod.imagen_url : 'https://via.placeholder.com/150'}" alt="${prod.producto_terminado}" width="100%">
-            <h3>${prod.producto_terminado}</h3>
-            <p>Stock: <span class="${stockClass}">${prod.cantidad_pack} packs</span></p>
-            <p>Estado: <span class="${stockClass}">${estado}</span></p>
-            
-            <button class="btn-editar-stock" 
-                data-id="${prod.id}" 
-                data-producto="${prod.producto_terminado}" 
-                data-cantidad="${prod.cantidad_pack}" 
-                data-precio="${prod.precio}"
-                data-imagen="${prod.imagen_url || ''}">
-                Editar
-            </button>
-            <button class="btn-eliminar-stock" data-id="${prod.id}">
-                Eliminar
-            </button>
-        `;
-        grid.appendChild(div);
-    });
+    const div = document.createElement('div');
+    div.classList.add('card-stock');
+    div.innerHTML = `
+        <img src="${prod.imagen_url ? '/uploads/' + prod.imagen_url : 'https://via.placeholder.com/150'}" alt="${prod.producto_terminado}" width="100%">
+        <h3>${prod.producto_terminado}</h3>
+        <p>Stock: <span class="${stockClass}">${cantidad} packs</span></p>
+        <p>Estado: <span class="${stockClass}">${estado}</span></p>
+        
+        <button class="btn-editar-stock" 
+            data-id="${prod.id}" 
+            data-producto="${prod.producto_terminado}" 
+            data-cantidad="${cantidad}" 
+            data-precio="${prod.precio}"
+            data-imagen="${prod.imagen_url || ''}">
+            Editar
+        </button>
+        <button class="btn-eliminar-stock" data-id="${prod.id}">
+            Eliminar
+        </button>
+    `;
+    grid.appendChild(div);
+});
+
 
     document.querySelectorAll('.btn-eliminar-stock').forEach(btn => {
         btn.addEventListener('click', () => {
