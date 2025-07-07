@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderCatalogo(productos) {
     const catalogo = document.getElementById('catalogo');
     catalogo.innerHTML = '';
-    
+
     productos.forEach(item => {
-    const cantidad = Number(prod.cantidad_pack);
+        const cantidad = Number(item.cantidad_pack);
+
         let estado = '';
         let clase = '';
 
@@ -86,9 +87,9 @@ function mostrarCarrito() {
     }
     let total = 0;
     carrito.forEach(item => {
-        total += item.precio * cantidad;
+        total += item.precio * item.cantidad;
         lista.innerHTML += `
-            <li>${item.nombre} - $${item.precio} x ${cantidad}</li>
+            <li>${item.nombre} - $${item.precio} x ${item.cantidad}</li>
         `;
     });
 
