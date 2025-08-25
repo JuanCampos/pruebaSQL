@@ -13,7 +13,7 @@
     width: 200px;
     margin: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background: #fff;
+    background: #424242;
     text-align: center;
     display: inline-block;
     background: #f9f9f9;
@@ -74,7 +74,7 @@
 }
 
 .btn-editar-stock {
-  background-color: #3498db;
+  background-color: #b700ffbd;
   border: none;
   color: white;
   padding: 8px 12px;
