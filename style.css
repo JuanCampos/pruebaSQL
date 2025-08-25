@@ -30,7 +30,6 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  color: var(--clr-dark);
 }
 
 body {
@@ -46,6 +45,10 @@ body {
 a {
   color: var(--clr-dark);
 }
+p{
+  
+  color: var(--clr-dark);
+}
 
 h1 {
   font-weight: 800;
@@ -55,6 +58,7 @@ h1 {
 
 h2 {
   font-size: 1.4rem;
+  color: var(--clr-dark);
 }
 
 h3 {
