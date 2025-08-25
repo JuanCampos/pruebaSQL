@@ -13,7 +13,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5500',
-    'https://legumbres-duplicado.netlify.app'
+    'https://dinastyigc.netlify.app'
   ]
 }));
 
