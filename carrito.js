@@ -127,7 +127,7 @@ function restar(id) {
 }
 
 function enviarPedidoWhatsApp() {
-    let mensaje = "Hola, les encargo:\n";
+    let mensaje = "Holaa, les encargo:\n";
     carrito.forEach(item => {
         mensaje += `- ${item.nombre}: ${item.cantidad} packs\n`;
     });
@@ -135,7 +135,7 @@ function enviarPedidoWhatsApp() {
     mensaje += `\nTotal: $${carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0)}`;
     mensaje += "\nGracias.";
 
-    const telefono = "+5491158718826";
+    const telefono = "+5491168683351";
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
 }
