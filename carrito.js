@@ -129,7 +129,7 @@ function restar(id) {
 function enviarPedidoWhatsApp() {
     let mensaje = "Holaa, les encargo:\n";
     carrito.forEach(item => {
-        mensaje += `- ${item.nombre}: ${item.cantidad} packs\n`;
+        mensaje += `- ${item.nombre}: ${item.cantidad}\n`;
     });
 
     mensaje += `\nTotal: $${carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0)}`;
